@@ -1,0 +1,25 @@
+{
+	"vendor" : {
+		"scripts" : [
+			"./assets/js/vendor/jquery.js",
+			"./assets/js/vendor/underscore.js",
+			"./assets/js/vendor/handlebars.js",
+			"./assets/js/vendor/backbone.js",
+			"./assets/js/vendor/backbone.marionette.js"
+		]
+	},
+
+	"app" : {
+		"scripts" : [
+			"./assets/js/app-js/Models/**/*.js",
+			"./assets/js/app-js/Views/**/*.js",
+			"./assets/js/app-js/Controllers/**/*.js"
+		],
+		"styles" : [
+			"./assets/sass/styles.scss"
+		],
+		"templates" : [
+			"./assets/templates/**/*.hbs"
+		]
+	}
+}
