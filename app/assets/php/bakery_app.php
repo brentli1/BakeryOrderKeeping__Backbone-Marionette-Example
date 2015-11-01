@@ -1,6 +1,6 @@
 <?php
-    include 'Functions.php';
-    include 'AltoRouter.php';
+    require 'bakery_tasks.php';
+    require 'AltoRouter.php';
     $router = new AltoRouter();
     $router->setBasePath('/assets/web');
     $router->map('GET','/home', function() {

@@ -1,4 +1,4 @@
-<?php include '../Classes/bakery_app.php'; ?>
+<?php require '../php/bakery_app.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
