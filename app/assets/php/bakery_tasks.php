@@ -2,11 +2,23 @@
     require 'DBconnect.php';
 
     function getOrders() {
-        $arr1=array('id'=>1,'result2'=>'efg');
-        $arr2=array('id'=>2,'result2'=>'lmn');
-        $arr3=array($arr1,$arr2);
+        $dbcon = DBconnect();
 
-        echo json_encode($arr3);
+        $sqlStatement = "SELECT * FROM tbl_orders";
+        $orders = mysqli_query($dbcon, $sqlStatement);
+
+        if(!$orders) {
+            die('Error: ' . mysql_error());
+        }
+
+        $rows = array();
+            while($r = mysqli_fetch_assoc($orders)) {
+            $rows[] = $r;
+        }
+
+        DBdisconnect($dbcon);
+
+        echo json_encode($rows);
     }
 
 ?>
