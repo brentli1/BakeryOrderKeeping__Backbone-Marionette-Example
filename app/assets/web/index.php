@@ -1,4 +1,3 @@
-<?php require '../php/bakery_app.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +5,15 @@
     <title>Bakery Order Tracker</title>
     <!-- <link rel="stylesheet" type="text/css" href="../build/css/styles.css"> -->
     <script type="text/javascript" src="../build/js/vendor.js"></script>
-    <!-- <script type="text/javascript" src="../js/app-js/bakery-app.js"></script>
+    <script type="text/javascript" src="../js/app-js/bakery_app.js"></script>
     <script type="text/javascript" src="../build/js/app.js"></script>
-    <script type="text/javascript" src="../build/templates/templates.js"></script> -->
+    <!-- <script type="text/javascript" src="../build/templates/templates.js"></script> -->
 </head>
 <body>
-    <h3>Try these requests: </h3>
-    <p><a href="home">GET hi</a></p>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            BakeryApp.start();
+        });
+    </script>
 </body>
 </html>
