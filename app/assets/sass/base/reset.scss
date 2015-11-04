@@ -9,17 +9,22 @@
     background: none;
     border: 0;
     box-sizing: border-box;
+    font-family: 'bakeryapp';
     font-size: 100%;
     font: inherit;
     text-decoration: none;
     vertical-align: baseline;
   }
 
+  a { color: inherit; }
+
   // HTML5 display-role reset for older browsers
   article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
   }
   body {
+    display: flex;
+    flex-direction: column;
     line-height: 1;
   }
   ol, ul {
@@ -43,6 +48,9 @@
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  html, body {
+    height: 100%;
   }
 }
 

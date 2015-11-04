@@ -1,28 +1,28 @@
 var BakeryApp = new Marionette.Application({
     onStart: function() {
-        router = new BakeryApp.Router();
-        // BakeryApp.orderController = new BakeryApp.OrderController();
+        // Initialize router
+        BakeryApp.router = new BakeryApp.Router();
 
+        // Initialize Controllers
+        BakeryApp.orderListContr = new BakeryApp.OrderListContr();
+        BakeryApp.orderContr = new BakeryApp.OrderContr();
+
+        // Start Backbone History
         Backbone.history.start();
-        this.getData();
-    },
-    getData: function() {
-        var orders = new BakeryApp.OrderCollection();
-        orders.fetch({
-            success: function(data){
-                console.log(data);
-            },
-            error: function(x,response) {
-                console.log('error', response);
-            }
-        });
     }
+});
+
+// Add main region
+BakeryApp.addRegions({
+    mainRegion: '#main-region'
 });
 
 // BakeryApp Router
 BakeryApp.Router = Backbone.Router.extend({
     routes: {
-        ''          : 'home',
-        'orders'    : 'showOrders'
+        ''                : 'home',
+        'orders'          : 'showOrderList',
+        'orders/edit/:id' : 'showOrderEdit',
+        'orders/new'      : 'createNewOrder'
       }
 });

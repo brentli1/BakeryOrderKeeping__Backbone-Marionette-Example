@@ -1,0 +1,75 @@
+// ------------------------------
+// WIDTHS
+// ------------------------------
+
+.w-20 { width: 20%; }
+.w-25 { width: 25%; }
+.w-30 { width: 30%; }
+.w-35 { width: 35%; }
+.w-60 { width: 60%; }
+.w-100 { width: 100%; }
+
+.mw-600 { max-width: 600px; }
+
+// ------------------------------
+// FONTS
+// ------------------------------
+
+$bakery-font : 'bakeryapp', 'Droid Sans', 'helvetica neue', 'arial', sans-serif;
+
+// ------------------------------
+// FONT STYLES
+// ------------------------------
+
+.b-14 {
+    font-family: $bakery-font;
+    font-size: 14px;
+}
+
+.b-16 {
+    font-family: $bakery-font;
+    font-size: 16px;
+}
+
+.hd-18 {
+    font-family: $bakery-font;
+    font-size: 18px;
+}
+
+.s-bold {
+    font-weight: 600;
+}
+
+// ------------------------------
+// COLORS
+// ------------------------------
+
+$white: #FFFFFF;
+
+// ------------------------------
+// PADDING
+// ------------------------------
+
+.pad-md { padding: 10px; }
+
+.pad-l-sm { padding-left: 5px; }
+
+// ------------------------------
+// LAYOUT
+// ------------------------------
+
+.t-center {
+    text-align: center;
+}
+
+.m-center { margin: 0 auto; }
+
+// ------------------------------
+// FLEX BOX
+// ------------------------------
+
+.d-f { display: flex; }
+
+.f-1 { flex: 1; }
+
+.fd-c { flex-direction: column; }

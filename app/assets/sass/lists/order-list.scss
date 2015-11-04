@@ -1,0 +1,41 @@
+.order--wrap {
+    border-bottom: 1px solid #CCCCCC;
+    color: rgba(0,0,0,0.6);
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+        background-color: #E0F5F4;
+    }
+
+    &:first-child {
+        border-top: 1px solid #CCCCCC;
+    }
+}
+
+.order--span {
+    display: inline-block;
+    float: left;
+    padding: 11px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.orders--wrap {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.orders--header {
+    background-color: #E7685F;
+    color: $white;
+}
+
+.order--header_item {
+    border-bottom: 1px solid #CCCCCC;
+    color: $white;
+    cursor: pointer;
+    overflow: hidden;
+}

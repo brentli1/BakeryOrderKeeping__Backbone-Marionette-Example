@@ -1,0 +1,22 @@
+#main-region {
+    display: flex;
+    flex: 1;
+    margin: 0 auto;
+    max-width: 700px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+#orders-header {
+    z-index: 6;
+}
+
+#orders-body {
+    border: 1px solid #CCCCCC;
+    border-radius: 0 0 5px 5px;
+    border-top: none;
+    box-shadow: 0 0 5px #CCCCCC;
+    flex: 1;
+    overflow-y: auto;
+    z-index: 5;
+}
