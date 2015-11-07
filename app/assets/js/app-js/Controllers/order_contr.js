@@ -33,27 +33,37 @@ BakeryApp.OrderContr = Marionette.Object.extend({
     },
 
     showOrder: function() {
-        var orderView = new BakeryApp.EditOrderView({
-            model: this.order
-        });
-        BakeryApp.mainRegion.show(orderView);
+        var layoutView = new BakeryApp.OrderDetailsLayout({
+                model: this.order
+            }),
+            orderView = new BakeryApp.EditOrderView({
+                model: this.order
+            }),
+            orderBtnView = new BakeryApp.OrderEditBtn({
+                model: this.order
+            });
+        BakeryApp.mainRegion.show(layoutView);
+        layoutView.getRegion('contentRegion').show(orderView);
+        layoutView.getRegion('buttonRegion').show(orderBtnView);
     },
 
-    toggleFormElements: function(disable) {
+    toggleFormElements: function(disable, view) {
         if(disable) {
+            view.getRegion('loaderRegion').show(new BakeryApp.LoaderView());
             $('input').prop('disabled', true);
             $('select').prop('disabled', true);
             $('div.order--btn').addClass('order--btn_disabled');
             $('div.order--btn').addClass('order--btn_disabled');
         }
+        view.getRegion('loaderRegion').show(new BakeryApp.SuccessCheckView());
         $('input').prop('disabled', false);
         $('select').prop('disabled', false);
         $('div.order--btn').removeClass('order--btn_disabled');
         $('div.order--btn').removeClass('order--btn_disabled');
     },
 
-    updateOrder: function(model) {
-        this.toggleFormElements(true);
+    updateOrder: function(model, view) {
+        this.toggleFormElements(true, view);
         var $fname = $('.js-fname').val(),
             $lname = $('.js-lname').val(),
             $email = $('.js-email').val();
@@ -63,7 +73,7 @@ BakeryApp.OrderContr = Marionette.Object.extend({
 
         model.save(null, {
             success: _.bind(function(model, response){
-                this.toggleFormElements(false);
+                this.toggleFormElements(false, view);
             }, this)
         });
     }

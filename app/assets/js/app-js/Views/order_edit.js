@@ -1,17 +1,16 @@
-// Edit order item view
-BakeryApp.EditOrderView = Marionette.ItemView.extend({
+// Layout View for Edit/Add Order
+BakeryApp.OrderDetailsLayout = Marionette.LayoutView.extend({
     tagName: 'div',
-
-    className: 't-center mw-960 m-center pad-md w-100 d-f fd-r order-details--main',
-
-    template: BakeryApp.templates.order_edit,
-
+    className: 'w-100',
+    template: BakeryApp.templates.order_details_layout,
+    regions: {
+        contentRegion : '#content-region',
+        loaderRegion  : '#loader-region',
+        buttonRegion  : '#button-region'
+    },
     ui: {
         'cancel' : '.js-cancel',
-        'update' : '.js-update',
-        'fname'  : '.js-fname',
-        'lname'  : '.js-lname',
-        'email'  : '.js-email'
+        'update' : '.js-update'
     },
 
     triggers: {
@@ -25,8 +24,17 @@ BakeryApp.EditOrderView = Marionette.ItemView.extend({
     },
 
     onUpdateOrder: function() {
-        BakeryApp.orderContr.updateOrder(this.model);
-    },
+        BakeryApp.orderContr.updateOrder(this.model, this);
+    }
+});
+
+// Edit order item view
+BakeryApp.EditOrderView = Marionette.ItemView.extend({
+    tagName: 'div',
+
+    className: 't-center mw-960 m-center pad-md w-100 d-f fd-r order-details--main',
+
+    template: BakeryApp.templates.order_edit,
 
     templateHelpers: function() {
         return {
@@ -49,3 +57,24 @@ BakeryApp.EditOrderView = Marionette.ItemView.extend({
         }
     }
 });
+
+// Button View
+BakeryApp.OrderEditBtn = Marionette.ItemView.extend({
+    tagName: 'div',
+    className: 'w-100 t-center',
+    template: BakeryApp.templates.order_edit_btns
+});
+
+// Checkmark View
+BakeryApp.SuccessCheckView = Marionette.ItemView.extend({
+    tagName: 'div',
+    className: 'w-100 t-center pos-r',
+    template: BakeryApp.templates.success_check,
+    initialize: function() {
+        _.delay(_.bind(function() {
+            this.remove();
+        }, this), 2000);
+    }
+});
+
+

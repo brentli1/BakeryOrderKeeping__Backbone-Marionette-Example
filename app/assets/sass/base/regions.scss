@@ -20,3 +20,27 @@
     overflow-y: auto;
     z-index: 5;
 }
+
+#button-region {
+    margin-bottom: 15px;
+}
+
+#loader-region {
+    height: 80px;
+    margin-top: -35px;
+
+    img {
+        height: 80px !important;
+        width: 100px !important;
+    }
+
+    .check {
+        height: 120px !important;
+        position: absolute;
+        top: -15px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 140px !important;
+    }
+}
