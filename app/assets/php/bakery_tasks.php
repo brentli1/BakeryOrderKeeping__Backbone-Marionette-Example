@@ -21,4 +21,14 @@
         echo json_encode($rows);
     }
 
+    function editOrders($data) {
+        $dbcon = DBconnect();
+        $stmt = $dbcon->prepare("UPDATE tbl_orders SET orderFName=?, orderLName=?, orderEmail=?, orderType=?, orderPlaceDateTime=?, orderDueDate=?, paid=?, baked=?, readyForPickup=?, pickedUp=? WHERE id=?");
+        $stmt->bind_param("ssssssssssi", $data['orderFName'], $data['orderLName'], $data['orderEmail'], $data['orderType'], $data['orderPlaceDateTime'],  $data['orderDueDate'],  $data['paid'],  $data['baked'],  $data['readyForPickup'],  $data['pickedUp'], $data['id']);
+
+        $stmt->execute();
+        DBdisconnect($dbcon);
+        echo json_encode($data);
+    }
+
 ?>

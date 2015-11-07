@@ -9,6 +9,12 @@
         getOrders();
     });
 
+    $router->map('PUT','/ajax/orders/edit/[i:id]', function() {
+        $request_body = file_get_contents('php://input');
+        $data = json_decode($request_body, true);
+        editOrders($data);
+    });
+
     $match = $router->match();
 
     if( $match && is_callable( $match['target'] ) ) {

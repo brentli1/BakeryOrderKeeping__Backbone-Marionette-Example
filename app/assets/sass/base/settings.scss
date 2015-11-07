@@ -9,7 +9,7 @@
 .w-60 { width: 60%; }
 .w-100 { width: 100%; }
 
-.mw-600 { max-width: 600px; }
+.mw-960 { max-width: 960px; }
 
 // ------------------------------
 // FONTS
@@ -51,6 +51,7 @@ $white: #FFFFFF;
 // ------------------------------
 
 .pad-md { padding: 10px; }
+.pad-sm { padding: 5px; }
 
 .pad-l-sm { padding-left: 5px; }
 
@@ -58,9 +59,9 @@ $white: #FFFFFF;
 // LAYOUT
 // ------------------------------
 
-.t-center {
-    text-align: center;
-}
+.pos-r { position: relative; }
+
+.t-center { text-align: center; }
 
 .m-center { margin: 0 auto; }
 
@@ -69,7 +70,6 @@ $white: #FFFFFF;
 // ------------------------------
 
 .d-f { display: flex; }
-
 .f-1 { flex: 1; }
-
 .fd-c { flex-direction: column; }
+.fd-r { flex-direction: row; flex-flow: row wrap;}

@@ -1,12 +1,139 @@
+.order-details--main {
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+        flex-flow: column;
+    }
+}
+
 .order-details--label {
     display: block;
     margin: 5px 0;
 }
 
-.order-details--text-input {
+.order-details--input {
     border: none;
     border-radius: 5px;
+    box-sizing:border-box;
     box-shadow: 0 0 1px 1px #CCCCCC;
     margin: 5px 0 20px;
     padding: 8px;
+}
+
+.order-details--select-box {
+    &:hover, &:focus {
+        .order--select-icon {
+            color: #9ccac8;
+        }
+    }
+}
+
+.order-details--select-list {
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.order-details--select-line {
+    font-size: 32px;
+    position: absolute;
+    right: 28px;
+    top: -3px;
+}
+
+.order--select-icon {
+    font-size: 24px;
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    transition-duration: 500ms;
+}
+
+.order-btn--bg {
+    background-color: #9ccac8;
+    height: 47px;
+    position: absolute;
+    width: 100%;
+    top: 45px;
+    transition-duration: 500ms;
+}
+
+.order--link {
+    height: 47px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: 14px;
+    transition-duration: 500ms;
+    z-index: 5;
+}
+
+.order--btn {
+    background-color: #FDE2E2;
+    display: inline-block;
+    height: 47px;
+    margin: 0 -2px -2px;
+    overflow: hidden;
+    padding: 15px 0;
+    text-align: center;
+    width: 250px;
+
+    &:first-child { border-right: 2px solid #9ccac8; }
+    &:last-child { border-left: 2px solid #9ccac8; }
+
+    &:hover {
+        .order-btn--bg {
+            top: 0;
+        }
+        .order--link {
+            color: #FFFFFF;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        &:first-child { border-right: 0 }
+        &:last-child { border-left: 0 }
+    }
+}
+
+// ---------------------------------------
+// ORDER FORM DISABLED STYLES
+// ---------------------------------------
+
+input:disabled, select:disabled {
+    background-color: #F9F7F7;
+    color: #717171;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.order--btn_disabled {
+    background-color: #F9F7F7;
+    border-color: #CCCCCC;
+
+    .order-btn--bg {
+        background-color: #000000;
+    }
+
+    &:hover {
+        a {
+            cursor: not-allowed;
+        }
+
+        .order-btn--bg {
+            top: 45px;
+        }
+
+        .order--link {
+            color: #000000;
+        }
+    }
+
+    &:first-child { border-right: 2px solid #000000; }
+    &:last-child { border-left: 2px solid #000000; }
 }

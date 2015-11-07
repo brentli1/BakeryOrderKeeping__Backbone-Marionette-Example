@@ -1,5 +1,7 @@
 // BakeryApp Order Model
-BakeryApp.OrderItem = Backbone.Model.extend({});
+BakeryApp.OrderItem = Backbone.Model.extend({
+    urlRoot: '/assets/php/ajax/orders/edit/'
+});
 
 // BakeryApp Order Collection of OrderItems
 BakeryApp.OrderCollection = Backbone.Collection.extend({

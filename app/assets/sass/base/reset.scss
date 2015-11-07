@@ -18,6 +18,13 @@
 
   a { color: inherit; }
 
+  input, select {
+    &:focus, &:active {
+      box-shadow: 0 0 1px 2px #9ccac8;
+      outline: none;
+    }
+  }
+
   // HTML5 display-role reset for older browsers
   article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
