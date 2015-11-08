@@ -15,6 +15,12 @@
         editOrders($data);
     });
 
+    $router->map('POST','/ajax/orders/create', function() {
+        $request_body = file_get_contents('php://input');
+        $data = json_decode($request_body, true);
+        createOrder($data);
+    });
+
     $match = $router->match();
 
     if( $match && is_callable( $match['target'] ) ) {

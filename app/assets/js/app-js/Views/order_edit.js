@@ -10,26 +10,34 @@ BakeryApp.OrderDetailsLayout = Marionette.LayoutView.extend({
     },
     ui: {
         'cancel' : '.js-cancel',
-        'update' : '.js-update'
+        'update' : '.js-update',
+        'create' : '.js-create'
     },
 
     triggers: {
-        'click @ui.cancel' : "goBack",
+        'click @ui.cancel' : 'goBack',
         // FIXME:  add in form validation before update call
-        'click @ui.update' : "updateOrder"
+        'click @ui.update' : 'saveOrder',
+        'click @ui.create' : 'saveOrder'
     },
 
     onGoBack: function() {
         BakeryApp.router.navigate('/orders', {trigger: true});
     },
 
-    onUpdateOrder: function() {
-        BakeryApp.orderContr.updateOrder(this.model, this);
+    onSaveOrder: function() {
+        BakeryApp.orderContr.saveOrder(this.model, this);
     }
 });
 
 // Edit order item view
 BakeryApp.EditOrderView = Marionette.ItemView.extend({
+    onShow: function() {
+        // Set the order type UI
+        var selected = this.model.get('orderType');
+        $('.js-type').val(selected);
+    },
+
     tagName: 'div',
 
     className: 't-center mw-960 m-center pad-md w-100 d-f fd-r order-details--main',
@@ -39,21 +47,17 @@ BakeryApp.EditOrderView = Marionette.ItemView.extend({
     templateHelpers: function() {
         return {
             not_paid: _.bind(function() {
-                if(this.model.get('paid') === 'no') { return true; }
-                return;
+                return this.model.get('paid') === 'no';
             }, this),
             not_baked: _.bind(function() {
-                if(this.model.get('baked') === 'no') { return true; }
-                return;
+                return this.model.get('baked') === 'no';
             }, this),
             not_ready: _.bind(function() {
-                if(this.model.get('readyForPickup') === 'no') { return true; }
-                return;
+                return this.model.get('readyForPickup') === 'no';
             }, this),
             not_pickedup: _.bind(function() {
-                if(this.model.get('pickedUp') === 'no') { return true; }
-                return;
-            }, this),
+                return this.model.get('pickedUp') === 'no';
+            }, this)
         }
     }
 });
@@ -63,6 +67,12 @@ BakeryApp.OrderEditBtn = Marionette.ItemView.extend({
     tagName: 'div',
     className: 'w-100 t-center',
     template: BakeryApp.templates.order_edit_btns
+});
+
+BakeryApp.OrderCreateBtn = Marionette.ItemView.extend({
+    tagName: 'div',
+    className: 'w-100 t-center',
+    template: BakeryApp.templates.order_create_btns
 });
 
 // Checkmark View

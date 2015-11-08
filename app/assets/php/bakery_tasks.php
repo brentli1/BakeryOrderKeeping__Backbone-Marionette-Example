@@ -31,4 +31,14 @@
         echo json_encode($data);
     }
 
+    function createOrder($data) {
+        $dbcon = DBconnect();
+        $stmt = $dbcon->prepare("INSERT into tbl_orders (orderFName, orderLName, orderEmail, orderType, orderPlaceDateTime, orderDueDate, paid, baked, readyForPickup, pickedUp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssssss", $data['orderFName'], $data['orderLName'], $data['orderEmail'], $data['orderType'], $data['orderPlaceDateTime'],  $data['orderDueDate'],  $data['paid'],  $data['baked'],  $data['readyForPickup'],  $data['pickedUp']);
+
+        $stmt->execute();
+        DBdisconnect($dbcon);
+        echo json_encode($data);
+    }
+
 ?>

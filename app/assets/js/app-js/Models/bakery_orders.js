@@ -1,6 +1,29 @@
 // BakeryApp Order Model
 BakeryApp.OrderItem = Backbone.Model.extend({
-    urlRoot: '/assets/php/ajax/orders/edit/'
+    defaults: {
+        orderType: 'null',
+        paid: 'no',
+        baked: 'no',
+        readyForPickup: 'no',
+        pickedUp: 'no'
+    },
+
+    methodUrl:  function(method){
+        if(method == "create"){
+            return "/assets/php/ajax/orders/create";
+        } else if(method == "update"){
+            return "/assets/php/ajax/orders/edit/" + this.attributes.id;
+        }
+        return false;
+    },
+
+    sync: function(method, model, options) {
+        if (model.methodUrl && model.methodUrl(method.toLowerCase())) {
+            options = options || {};
+            options.url = model.methodUrl(method.toLowerCase());
+        }
+        Backbone.sync(method, model, options);
+    }
 });
 
 // BakeryApp Order Collection of OrderItems

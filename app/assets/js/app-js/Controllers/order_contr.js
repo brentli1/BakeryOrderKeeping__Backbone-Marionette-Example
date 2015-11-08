@@ -9,7 +9,7 @@ BakeryApp.OrderContr = Marionette.Object.extend({
         }, this));
 
         router.on('route:createNewOrder', _.bind(function() {
-            // do magic
+            this.showCreate();
         }, this));
     },
 
@@ -47,6 +47,22 @@ BakeryApp.OrderContr = Marionette.Object.extend({
         layoutView.getRegion('buttonRegion').show(orderBtnView);
     },
 
+    showCreate: function() {
+        var newModel = new BakeryApp.OrderItem();
+            layoutView = new BakeryApp.OrderDetailsLayout({
+                model: newModel
+            }),
+            orderView = new BakeryApp.EditOrderView({
+                model: newModel
+            }),
+            orderBtnView = new BakeryApp.OrderCreateBtn({
+                model: newModel
+            });
+        BakeryApp.mainRegion.show(layoutView);
+        layoutView.getRegion('contentRegion').show(orderView);
+        layoutView.getRegion('buttonRegion').show(orderBtnView);
+    },
+
     toggleFormElements: function(disable, view) {
         if(disable) {
             view.getRegion('loaderRegion').show(new BakeryApp.LoaderView());
@@ -62,14 +78,24 @@ BakeryApp.OrderContr = Marionette.Object.extend({
         $('div.order--btn').removeClass('order--btn_disabled');
     },
 
-    updateOrder: function(model, view) {
+    saveOrder: function(model, view) {
         this.toggleFormElements(true, view);
         var $fname = $('.js-fname').val(),
             $lname = $('.js-lname').val(),
-            $email = $('.js-email').val();
+            $email = $('.js-email').val(),
+            $type = $('.js-type').find('option:selected').val(),
+            $paid = $('.js-paid').find('option:selected').val(),
+            $baked = $('.js-baked').find('option:selected').val(),
+            $ready = $('.js-ready').find('option:selected').val(),
+            $pickedup = $('.js-pickedup').find('option:selected').val();
         model.set('orderFName', $fname);
         model.set('orderLName', $lname);
         model.set('orderEmail', $email);
+        model.set('orderType', $type);
+        model.set('paid', $paid);
+        model.set('baked', $baked);
+        model.set('readyForPickup', $ready);
+        model.set('pickedUp', $pickedup);
 
         model.save(null, {
             success: _.bind(function(model, response){
