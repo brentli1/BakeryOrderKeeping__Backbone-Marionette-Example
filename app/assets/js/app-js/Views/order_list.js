@@ -22,7 +22,8 @@ BakeryApp.OrderListLayout = Marionette.LayoutView.extend({
     template: BakeryApp.templates.order_layout,
     regions: {
         orders_header: '#orders-header',
-        orders_body: '#orders-body'
+        orders_body: '#orders-body',
+        orders_create: '#orders-create'
     }
 });
 
@@ -36,4 +37,11 @@ BakeryApp.LoaderView = Marionette.ItemView.extend({
     tagName: 'div',
     className: 'm-center',
     template: BakeryApp.templates.loader
+});
+
+// BakeryApp Create Btn
+BakeryApp.CreateBtn = Marionette.ItemView.extend({
+    tagName: 'div',
+    className: 'm-center',
+    template: BakeryApp.templates.order_create_btn
 });

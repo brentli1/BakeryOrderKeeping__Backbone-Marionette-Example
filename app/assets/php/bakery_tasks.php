@@ -37,8 +37,9 @@
         $stmt->bind_param("ssssssssss", $data['orderFName'], $data['orderLName'], $data['orderEmail'], $data['orderType'], $data['orderPlaceDateTime'],  $data['orderDueDate'],  $data['paid'],  $data['baked'],  $data['readyForPickup'],  $data['pickedUp']);
 
         $stmt->execute();
+        $id = $dbcon->insert_id;;
         DBdisconnect($dbcon);
-        echo json_encode($data);
+        echo $id;
     }
 
 ?>

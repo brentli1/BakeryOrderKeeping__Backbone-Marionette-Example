@@ -102,6 +102,13 @@ BakeryApp.OrderContr = Marionette.Object.extend({
         model.save(null, {
             success: _.bind(function(model, response){
                 this.toggleFormElements(false, view);
+                if(model.get('id') === undefined) {
+                    model.set('id', response);
+                    BakeryApp.orders.add(model);
+                    _.delay(_.bind(function() {
+                        BakeryApp.router.navigate('/orders/edit/' + model.get('id'), {trigger: true});
+                    }, this), 2000);
+                }
             }, this)
         });
     }

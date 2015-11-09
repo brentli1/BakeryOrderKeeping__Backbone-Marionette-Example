@@ -21,6 +21,7 @@ BakeryApp.OrderListContr = Marionette.Object.extend({
         BakeryApp.ordersLayout = new BakeryApp.OrderListLayout();
         BakeryApp.mainRegion.show(BakeryApp.ordersLayout);
         BakeryApp.ordersLayout.orders_header.show(new BakeryApp.OrderListHeaderView);
+        BakeryApp.ordersLayout.orders_create.show(new BakeryApp.CreateBtn);
         // Show Loader
         BakeryApp.ordersLayout.orders_body.show(new BakeryApp.LoaderView);
 
