@@ -87,7 +87,8 @@ BakeryApp.OrderContr = Marionette.Object.extend({
             $paid = $('.js-paid').find('option:selected').val(),
             $baked = $('.js-baked').find('option:selected').val(),
             $ready = $('.js-ready').find('option:selected').val(),
-            $pickedup = $('.js-pickedup').find('option:selected').val();
+            $pickedup = $('.js-pickedup').find('option:selected').val(),
+            $date = $('.js-date').val();
         model.set('orderFName', $fname);
         model.set('orderLName', $lname);
         model.set('orderEmail', $email);
@@ -96,6 +97,7 @@ BakeryApp.OrderContr = Marionette.Object.extend({
         model.set('baked', $baked);
         model.set('readyForPickup', $ready);
         model.set('pickedUp', $pickedup);
+        model.set('orderDueDate', $date);
 
         model.save(null, {
             success: _.bind(function(model, response){

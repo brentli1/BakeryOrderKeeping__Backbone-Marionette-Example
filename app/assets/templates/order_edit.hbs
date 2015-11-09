@@ -16,8 +16,6 @@
             <option value="misc">Misc.</option>
         </select>
     </div>
-</div>
-<div class="f-1 pad-sm order-details--wrap">
     <span class="order-details--label hd-18 s-bold">Paid</span>
     <div class="w-100 m-center pos-r order-details--select-box">
         <span class="icon-arrow-down-alt1 order--select-icon"><span class="order-details--select-line">| </span></span>
@@ -26,6 +24,8 @@
             <option value="no" {{#if not_paid}}selected{{/if}}>No</option>
         </select>
     </div>
+</div>
+<div class="f-1 pad-sm order-details--wrap">
     <span class="order-details--label hd-18 s-bold">Baked</span>
     <div class="w-100 m-center pos-r order-details--select-box">
         <span class="icon-arrow-down-alt1 order--select-icon"><span class="order-details--select-line">| </span></span>
@@ -49,5 +49,10 @@
             <option value="yes">Yes</option>
             <option value="no" {{#if not_pickedup}}selected{{/if}}>No</option>
         </select>
+    </div>
+    <span class="order-details--label hd-18 s-bold">Pick Up Date</span>
+    <div class="w-100 m-center pos-r order-details--select-box">
+        <span class="icon-calendar order--select-icon"><span class="order-details--select-line">| </span></span>
+        <input type="date" class="order-details--input order-details--select-list w-100 b-16 js-date" required value="{{orderDueDate}}">
     </div>
 </div>

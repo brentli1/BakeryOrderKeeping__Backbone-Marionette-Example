@@ -59,6 +59,16 @@
   html, body {
     height: 100%;
   }
+
+  // DATE PICKER STYLES
+  input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+  }
+
+  input[type=date]::-webkit-calendar-picker-indicator {
+    color: #FFFFFF;
+  }
 }
 
 @include meyer-reset;
